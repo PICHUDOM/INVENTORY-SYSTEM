@@ -24,26 +24,26 @@
               <div class="flex flex-col border-2 border-yellow-400 rounded-lg p-6 text-center bg-gradient-to-r shadow-lg mb-4 h-full">
                 <h2 class="text-lg font-semibold text-yellow-700 mb-2">TOTAL SALE AMOUNT</h2>
                 <div class="border-t-2 border-yellow-500 my-6"></div>
-                <p class="text-3xl font-bold text-yellow-900">123</p>
+                <p class="text-3xl font-bold text-yellow-900">{{$countTotalSale ?? 0}}</p>
               </div>
               <div class="flex flex-col border-2 border-yellow-400 rounded-lg p-6 text-center bg-gradient-to-r shadow-lg h-full">
                 <h2 class="text-lg font-semibold text-yellow-700 mb-2">TOTAL ORDER AMOUNT</h2>
                 <div class="border-t-2 border-yellow-500 my-6"></div>
-                <p class="text-3xl font-bold text-yellow-900">123</p>
+                <p class="text-3xl font-bold text-yellow-900">{{$countTotalOrder ?? 0}}</p>
               </div>
             </div>
             <div class="flex flex-col w-full md:w-1/3">
               <div class="flex flex-col border-2 border-yellow-400 rounded-lg p-6 text-center bg-gradient-to-r shadow-lg mb-4 h-full">
                 <h2 class="text-lg font-semibold text-yellow-700 mb-2">TOTAL INCOME</h2>
                 <div class="border-t-2 border-yellow-500 my-6"></div>
-                <p class="text-2xl font-bold text-yellow-900">USD: 123</p>
-                <p class="text-2xl font-bold text-yellow-900">RIEL: 123</p>
-              </div>
+                <p class="text-2xl font-bold text-yellow-900">USD: {{ number_format($totalIncome, 2) ?? 00 }}</p>
+                <p class="text-2xl font-bold text-yellow-900">RIEL: {{ number_format($totalIncomeReal, 2) ?? 00 }}</p>
+              </div>              
               <div class="flex flex-col border-2 border-yellow-400 rounded-lg p-6 text-center bg-gradient-to-r shadow-lg h-full">
                 <h2 class="text-lg font-semibold text-yellow-700 mb-2">TOTAL EXPENSE</h2>
                 <div class="border-t-2 border-yellow-500 my-6"></div>
-                <p class="text-2xl font-bold text-yellow-900">USD: 123</p>
-                <p class="text-2xl font-bold text-yellow-900">RIEL: 123</p>
+                <p class="text-2xl font-bold text-yellow-900">USD: {{ number_format($totalExpense, 2) ?? 00 }}</p>
+                <p class="text-2xl font-bold text-yellow-900">RIEL: {{ number_format($totalExpenseReal, 2) ?? 00 }}</p>
               </div>
             </div>
             <div class="flex flex-col w-full md:w-1/3">
@@ -54,13 +54,13 @@
                   <div>
                     <p class="text-3xl font-bold text-yellow-700">USD</p>
                     <div class="border-t-2 border-yellow-500 my-6"></div>
-                    <p class="text-3xl font-bold text-yellow-900">123</p>
+                    <p class="text-3xl font-bold text-yellow-900"> {{ number_format($totalIncome - $totalExpense, 2) }}</p>
                   </div>
                   <div class="border-l-2 border-yellow-500 h-24 mx-auto mt-4"></div>
                   <div>
                     <p class="text-3xl font-bold text-yellow-700">RIEL</p>
                     <div class="border-t-2 border-yellow-500 my-6"></div>
-                    <p class="text-3xl font-bold text-yellow-900">123</p>
+                    <p class="text-3xl font-bold text-yellow-900">{{ number_format($totalIncomeReal - $totalExpenseReal, 2) ?? 0 }}</p>
                   </div>
                 </div>
               </div>

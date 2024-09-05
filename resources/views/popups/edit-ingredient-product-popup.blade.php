@@ -6,52 +6,47 @@
         <form action="/setting/${proId}" method="POST" enctype="multipart/form-data" class="p-6">
             @csrf
             @method('PATCH')
+            <input type="hidden" id="IPI_id" name="IPI_id" value="">
             <div class="mb-4 flex justify-center">
                 <label for="Item_Engname" class="block text-2xl font-bold text-gray-900 text-center mb-1"></label>
             </div>
             <div class="mb-4">
                 <label class="block text-md font-semibold text-gray-900 mb-1">ធាតុផ្សំ</label>
-                <select id="IIQ_name" name="IIQ_name" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1">
-                    <option value=""></option>
+                <select id="IIQ_name" name="IIQ_id" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1" onchange="handleSelect(event)">
+                    <option value=""  disabled selected>Select an Ingredient</option>
+                    <option value="createnewITEM">++ CREATE NEW ING ++</option>
                     @foreach ($ingredientQty as $data)
-                    <option value="{{ $data->IIQ_name }}">
+                    <option value="{{ $data->IIQ_id }}">
                         {{ $data->IIQ_name }}
                     </option>
                     @endforeach
                 </select>
-                {{-- <input name="IIQ_name" type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1"> --}}
-                <input name="Item_Name" type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1">
-                <input name="Qty" type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1">
-                <input name="UOM" type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-1">
             </div>
             <div class="text-end">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">UPDATE</button>
-                <button type="button" id="closeEditIngredientPopup" class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-4 py-2 rounded-md ml-2 focus:outline-none">CANCEL</button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">Save Change</button>
+                <button type="button" id="closeEditIngredientPopup" class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-4 py-2 rounded-md ml-2 focus:outline-none">Cancel</button>
             </div>
         </form>
     </div>
 </div>
+@include('popups.create-productIngr')
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const editIngredientPopup = document.getElementById('EditIngredientPopup');
+    const popupItem_1 = document.getElementById('popupItem_1');
     const closeEditIngredientPopup = document.getElementById('closeEditIngredientPopup');
-    
+    const closeCreateItemPopup = document.getElementById('closeCreateItemPopup');
+
     document.querySelectorAll('.edit-ingredient-btn').forEach(button => {
         button.addEventListener('click', () => {
-            // Extract data attributes from the clicked button
-            // const IIQname = button.getAttribute('data-IIQ_name');
             const productName = button.getAttribute('data-product-name');
             const itemName = button.getAttribute('data-item-name');
             const qty = button.getAttribute('data-qty');
             const uom = button.getAttribute('data-uom');
             const proId = button.getAttribute('data-pro-id');
-
-            // Populate the popup form fields
-            // editIngredientPopup.querySelector('input[name="IIQ_name"]').value = IIQname;
             editIngredientPopup.querySelector('label[for="Item_Engname"]').textContent = productName;
-            editIngredientPopup.querySelector('input[name="Item_Name"]').value = itemName;
-            editIngredientPopup.querySelector('input[name="Qty"]').value = qty;
-            editIngredientPopup.querySelector('input[name="UOM"]').value = uom;
+
+            editIngredientPopup.querySelector('input[name="IPI_id"]').value = proId;
 
             // Update form action with the correct ID
             const form = editIngredientPopup.querySelector('form');
@@ -66,6 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide the popup
         editIngredientPopup.classList.add('hidden');
     });
+    closeCreateItemPopup.addEventListener('click', () => {
+        // Hide the popup
+        popupItem_1.classList.add('hidden');
+    });
 });
 
+function handleSelect(event) {
+    var selectedValue = event.target.value;
+    if (selectedValue === 'createnewITEM') {
+        togglePopup('popupItem_1');
+    }
+}
+function togglePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.toggle('hidden');
+    }
+}
 </script>
