@@ -1,104 +1,125 @@
-@vite('resources/css/app.css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['1st Qtr', 11],
-      ['2nd Qtr', 6],
-      ['3rd Qtr', 3],
-      ['4th Qtr', 3]
-    ]);
-
-    var options = {
-      title: 'Sales'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-  }
-</script>
-
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['bar']});
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses', 'Profit'],
-      ['2014', 1000, 400, 200],
-      ['2015', 1170, 460, 250],
-      ['2016', 660, 1120, 300],
-      ['2017', 1030, 540, 350]
-    ]);
-
-    var options = {
-      chart: {
-        title: 'Company Performance',
-        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-      }
-    };
-
-    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  }
-</script>
-
 @extends('layouts.app-nav')
 
 @section('content')
-<div class="flex flex-col">
-  <div class="flex flex-col flex-grow p-4 bg-background text-foreground">
-    <div class="flex flex-col items-center flex-grow p-4">
-      <div class="w-full lg:w-4/5 bg-card text-card-foreground">
-        <div class="flex flex-col lg:flex-row">
-          <div class="bg-white rounded-lg p-4 w-full lg:w-1/4 lg:pr-4 mb-4 lg:mb-0">
-            <h2 class="text-xl font-bold mb-6 text-gray-800">Report Overview</h2>
-            <ul class="space-y-2">
-              <li class="flex items-center cursor-pointer text-primary hover:text-primary-700">
-                <span class="text-lg mr-2">+</span> Inventory Detail
-              </li>
-              <li class="flex items-center cursor-pointer text-gray-600">
-                <span class="text-lg mr-2">+</span> Detailed Report
-              </li>
-              <li class="flex items-center cursor-pointer text-gray-600">
-                <span class="text-lg mr-2">+</span> Sales Trends
-              </li>
-              <li class="flex items-center cursor-pointer text-gray-600">
-                <span class="text-lg mr-2">+</span> Customer Insights
-              </li>
-              <li class="flex items-center cursor-pointer text-gray-600">
-                <span class="text-lg mr-2">+</span> Profit Analysis
-              </li>
-            </ul>
-          </div>
-          <div class="w-full lg:w-3/4">
-            <div class="flex flex-col lg:flex-row items-center mb-6">
-              <label class="mr-2 font-semibold">Start Date:</label>
-              <input type="date" class="border border-input p-1 rounded-lg mb-4 lg:mb-0 lg:mr-4 w-full lg:w-auto" />
-              <label class="mr-2 font-semibold">End Date:</label>
-              <input type="date" class="border border-input p-1 rounded-lg mb-4 lg:mb-0 lg:mr-4 w-full lg:w-auto" />
-              <button class="bg-primary text-primary-foreground p-1 px-4 rounded-lg w-full lg:w-auto">SEARCH</button>
+<div class="container mx-auto px-4 py-6">
+    <div class="w-4/5 mx-auto">
+        <div class="text-center">
+            <div class="border-b border-gray-300 mb-12">
+                <nav class="flex justify-center space-x-8">
+                    <a href="#sale-detail" class="tab py-4 px-8 text-gray-700 font-semibold text-lg hover:text-blue-600 transition-colors duration-300 ease-in-out relative">
+                        Sale Detail
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 rounded-md scale-x-0 transition-transform duration-300 ease-in-out"></span>
+                    </a>
+                    <a href="#sale-summary" class="tab py-4 px-8 text-gray-700 font-semibold text-lg hover:text-blue-600 transition-colors duration-300 ease-in-out relative">
+                        Sale Summary
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 rounded-md scale-x-0 transition-transform duration-300 ease-in-out"></span>
+                    </a>
+                    <a href="#sale-add-ons" class="tab py-4 px-8 text-gray-700 font-semibold text-lg hover:text-blue-600 transition-colors duration-300 ease-in-out relative">
+                        Sale Add-ons
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 rounded-md scale-x-0 transition-transform duration-300 ease-in-out"></span>
+                    </a>
+                    <a href="#sale-discount" class="tab py-4 px-8 text-gray-700 font-semibold text-lg hover:text-blue-600 transition-colors duration-300 ease-in-out relative">
+                        Sale Discount
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500 rounded-md scale-x-0 transition-transform duration-300 ease-in-out"></span>
+                    </a>
+                </nav>
             </div>
-            <div class="flex flex-col lg:flex-row">
-              <div class="w-full lg:w-2/3 pr-0 lg:pr-4 mb-4 lg:mb-0">
-                <div id="columnchart_material" class="w-full" style="height: 400px;"></div>
-              </div>
-              <div class="w-full lg:w-1/3">
-                <div id="piechart" class="w-full" style="height: 400px;"></div>
-              </div>
+            
+            <div class="flex justify-center mt-6">
+                <div class="flex items-center space-x-4">
+                    <select id="brand-dropdown" class="block px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <option value="">-- Choose a Brand --</option>
+                        <option value="brand1">Brand 1</option>
+                        <option value="brand2">Brand 2</option>
+                        <option value="brand3">Brand 3</option>
+                    </select>
+                    <div class="flex items-center space-x-1">
+                        <label for="start-date" class="text-gray-700 text-sm">From:</label>
+                        <input type="date" id="start-date" class="block px-4 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label for="end-date" class="text-gray-700 text-sm">To:</label>
+                        <input type="date" id="end-date" class="block px-4 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <button class="px-4 py-1 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        Filter
+                    </button>
+                    <button class="px-4 py-1 bg-green-500 text-white rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                        Export
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div id="sale-detail" class="mt-6">
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold mb-4">Sale Detail</h2>
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-2 px-4 text-left text-gray-600">Sale ID</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Shop</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Location</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Product Name (ENG)</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Product Name (KH)</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Add-ons</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Qty</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Price</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Currency ID</th>
+                            <th class="py-2 px-4 text-left text-gray-600">Sale Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-2 px-4">1001</td>
+                            <td class="py-2 px-4">HOMWTOWN</td>
+                            <td class="py-2 px-4">SEKSOK</td>
+                            <td class="py-2 px-4">Product A</td>
+                            <td class="py-2 px-4">ផលិតផល A</td>
+                            <td class="py-2 px-4">Sugar120%</td>
+                            <td class="py-2 px-4">10</td>
+                            <td class="py-2 px-4">$2</td>
+                            <td class="py-2 px-4">USD</td>
+                            <td class="py-2 px-4">06-09-2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="sale-summary" class="mt-6 hidden"></div>
+        <div id="sale-add-ons" class="mt-6 hidden"></div>
+        <div id="sale-discount" class="mt-6 hidden"></div>
     </div>
-  </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const defaultTab = document.querySelector('nav a[href="#sale-detail"]');
+        const defaultSection = document.querySelector('#sale-detail');
+
+        if (defaultTab && defaultSection) {
+            defaultTab.classList.add('text-blue-600');
+            defaultTab.querySelector('span').classList.add('scale-x-100');
+            defaultSection.classList.remove('hidden');
+        }
+
+        document.querySelectorAll('nav a').forEach(tab => {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('div[id^="sale-"]').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                document.querySelector(this.getAttribute('href')).classList.remove('hidden');
+                
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('text-blue-600');
+                    a.querySelector('span').classList.remove('scale-x-100');
+                });
+                
+                this.classList.add('text-blue-600');
+                this.querySelector('span').classList.add('scale-x-100');
+            });
+        });
+    });
+</script>
 @endsection
