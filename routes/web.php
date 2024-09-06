@@ -10,6 +10,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\AddonsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProductsController;
@@ -121,4 +122,7 @@ Route::patch('/setting/test/{Pro_id}', [SettingController::class, 'updateIngredi
 //edit user setting
 Route::patch('/setting/user/{U_id}', [SettingController::class, 'updateUser'])->name('setting.updateUser');
 
+//expense
+Route::get('/expense', [ExpenseController::class, 'index'])->name('expense');
+Route::post('/setting/expense', [SettingController::class, 'createIng'])->name('setting.createIng');
 
