@@ -1,15 +1,15 @@
 @php
 $navItems = [
-    ['route' => 'inventory', 'label' => 'INVENTORY', 'roles' => [1, 3]],
-    ['route' => 'suppliers', 'label' => 'SUPPLIER', 'roles' => [1, 3]],
-    ['route' => 'items', 'label' => 'ITEM', 'roles' => [1, 3]],
-    ['route' => 'orders', 'label' => 'ORDER', 'roles' => [1, 3]],
+    ['route' => 'inventory', 'label' => 'INVENTORY', 'roles' => [1, 2, 3]],
+    ['route' => 'suppliers', 'label' => 'SUPPLIER', 'roles' => [1, 2, 3]],
+    ['route' => 'items', 'label' => 'MATERIAL', 'roles' => [1, 2, 3]],
+    ['route' => 'orders', 'label' => 'ORDER', 'roles' => [1, 2, 3]],
     ['route' => 'pos', 'label' => 'POS', 'roles' => [1, 2, 4]],
-    ['route' => 'products', 'label' => 'PRODUCT', 'roles' => [1, 2, 4]],
-    ['route' => 'add-ons', 'label' => 'ADD-ONS', 'roles' => [1, 2, 4]],
-    ['route' => 'expense', 'label' => 'EXPENSE', 'roles' => [1, 2, 4]],
-    ['route' => 'reports', 'label' => 'REPORTS', 'roles' => [1, 3, 4]],
-    ['route' => 'accounting', 'label' => 'ACCOUNT', 'roles' => [1, 3, 4]],
+    ['route' => 'products', 'label' => 'MENU', 'roles' => [1, 2, 4]],
+    ['route' => 'add-ons', 'label' => 'ADD-ON', 'roles' => [1, 2, 4]],
+    ['route' => 'expense', 'label' => 'EXPENSE', 'roles' => [1, 2]],
+    ['route' => 'reports', 'label' => 'REPORT', 'roles' => [1, 2]],
+    ['route' => 'accounting', 'label' => 'PROFIT / LOSE', 'roles' => [1, 2]],
 ];
 @endphp
 @vite('resources/css/app.css')

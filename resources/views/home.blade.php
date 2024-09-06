@@ -1,17 +1,17 @@
 @php
 $menuItems = [
     ['route' => '/dashboard', 'icon' => 'fas fa-chart-line', 'label' => 'Dashboard', 'roles' => [1,2]],
-    ['route' => '/inventory', 'icon' => 'fas fa-boxes', 'label' => 'Inventory', 'roles' => [1, 3, 2]],
-    ['route' => '/suppliers', 'icon' => 'fas fa-truck', 'label' => 'Suppliers', 'roles' => [1, 3, 2]],
-    ['route' => '/items', 'icon' => 'fas fa-shopping-basket', 'label' => 'Material', 'roles' => [1, 3, 2 ]],
-    ['route' => '/orders', 'icon' => 'fas fa-shopping-cart', 'label' => 'Orders', 'roles' => [1, 3, 2 ]],
-    ['route' => '/pos', 'icon' => 'fas fa-cash-register', 'label' => 'POS', 'roles' => [1,4 ,2]],
-    ['route' => '/products', 'icon' => 'fas fa-cube', 'label' => 'Menu', 'roles' => [1,4,2]],
-    ['route' => '/add-ons', 'icon' => 'fas fa-puzzle-piece', 'label' => 'Add-ons', 'roles' => [1,4,2]],
-    ['route' => '/reports', 'icon' => 'fas fa-file-alt', 'label' => 'Reports', 'roles' => [1, 3, 4,2]],
-    ['route' => '/expense', 'icon' => 'fas fa-file-alt', 'label' => 'Expense', 'roles' => [1, 3, 4,2]],
+    ['route' => '/inventory', 'icon' => 'fas fa-boxes', 'label' => 'Inventory', 'roles' => [1, 2, 3]],
+    ['route' => '/suppliers', 'icon' => 'fas fa-truck', 'label' => 'Supplier', 'roles' => [1, 2, 3]],
+    ['route' => '/items', 'icon' => 'fas fa-shopping-basket', 'label' => 'Material', 'roles' => [1, 2, 3 ]],
+    ['route' => '/orders', 'icon' => 'fas fa-shopping-cart', 'label' => 'Order', 'roles' => [1, 2, 3 ]],
+    ['route' => '/pos', 'icon' => 'fas fa-cash-register', 'label' => 'POS', 'roles' => [1, 2, 4]],
+    ['route' => '/products', 'icon' => 'fas fa-cube', 'label' => 'Menu', 'roles' => [1, 2, 4]],
+    ['route' => '/add-ons', 'icon' => 'fas fa-puzzle-piece', 'label' => 'Add-on', 'roles' => [1, 2, 4]],
+    ['route' => '/reports', 'icon' => 'fas fa-file-alt', 'label' => 'Report', 'roles' => [1, 2]],
+    ['route' => '/expense', 'icon' => 'fas fa-file-alt', 'label' => 'Expense', 'roles' => [1, 2]],
     ['route' => '/accounting', 'icon' => 'fas fa-calculator', 'label' => 'Profit / Lose', 'roles' => [1,2]],
-    ['route' => '/setting', 'icon' => 'fas fa-cog', 'label' => 'Settings', 'roles' => [1,2]],
+    ['route' => '/setting', 'icon' => 'fas fa-cog', 'label' => 'Setting', 'roles' => [1,2]],
 ];
 @endphp
 @php
