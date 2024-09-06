@@ -17,34 +17,16 @@
     </div>
     <div class="w-full md:w-4/5 border-2 border-bsicolor p-2 font-times">
       <div class="overflow-x-auto">
-        <h4 class="text-center font-bold pb-4 text-lg">ITEMS INFORMATION</h4>
+        <h4 class="text-center font-bold pb-4 text-lg"><u>EXPENSE INFORMATION</u></h4>
         <table class="min-w-full bg-white border-collapse">
-          <thead>
+        <thead>
             <tr class="bg-primary text-primary-foreground text-lg">
               <th class="py-4 px-4 border border-white">NO.</th>
-              <th class="py-4 px-4 border border-white">
-                <a href="{{ url('/items?sortColumn=Item_Khname&sortOrder=' . (request('sortOrder') == 'asc' ? 'desc' : 'asc') . '&search=' . request('search')) }}">
-                  KHMER NAME
-                  <i class="fas fa-xs {{ request('sortColumn') == 'Item_Khname' ? (request('sortOrder') == 'asc' ? 'fa-sort-alpha-up' : 'fa-sort-alpha-down') : 'fa-sort-alpha-down' }}"></i>
-                </a>
-              </th>
-              <th class="py-4 px-4 border border-white">
-                <a href="{{ url('/items?sortColumn=Item_Engname&sortOrder=' . (request('sortOrder') == 'asc' ? 'desc' : 'asc') . '&search=' . request('search')) }}">
-                  ENGLISH NAME
-                  <i class="fas fa-xs {{ request('sortColumn') == 'Item_Engname' ? (request('sortOrder') == 'asc' ? 'fa-sort-alpha-up' : 'fa-sort-alpha-down') : 'fa-sort-alpha-down' }}"></i>
-                </a>
-              </th>
-              <th class="py-4 px-4 border border-white">
-                <a href="{{ url('/items?sortColumn=category_name&sortOrder=' . (request('sortOrder') == 'asc' ? 'desc' : 'asc') . '&search=' . request('search')) }}">
-                  CATEGORY
-                  <i class="fas fa-xs {{ request('sortColumn') == 'category_name' ? (request('sortOrder') == 'asc' ? 'fa-sort-alpha-up' : 'fa-sort-alpha-down') : 'fa-sort-alpha-down' }}"></i>
-                </a>
-              </th>
-              <th class="py-4 px-4 border border-white">EXPENSE NAME</th>
-              <th class="py-4 px-4 border border-white">IEC ID</th>
-              <th class="py-4 px-4 border border-white">EXP DATE</th>
-              <th class="py-4 px-4 border border-white">ORDER INFORMATION</th>
-              <th class="py-4 px-4 border border-white">ACTION</th>
+              <th class="py-4 px-4 border border-white">TITLE</th>
+              <th class="py-4 px-4 border border-white">TYPE</th>
+              <th class="py-4 px-4 border border-white">TOTAL</th>
+              <th class="py-4 px-4 border border-white">CURRENCY</th>
+              <th class="py-4 px-4 border border-white">DATE</th>
             </tr>
           </thead>
           <tbody id="">
