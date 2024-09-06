@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Accounting extends Model
 {
-    use HasFactory;
+    protected $table = 'inv_account';
+    public $timestamps = false;
+    protected $primaryKey = 'IA_id';
+    public $incrementing = true;
+    protected $keyType = 'int'; 
+    protected $fillable = [
+        'type',
+        'price',
+        'Currency_id',
+        'date'
+    ];
 }

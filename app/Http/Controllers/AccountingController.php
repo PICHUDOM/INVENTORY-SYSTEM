@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounting;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Orders;
+use App\Models\Sales;
 
 class AccountingController extends Controller
 {
@@ -19,7 +22,21 @@ class AccountingController extends Controller
      */
     public function index()
     {
-        return view('accounting');
+        $totalExpense = Accounting::where('type', 'Expense')
+            ->where('Currency_id', 1)
+            ->sum('price');
+        $totalExpenseReal = Accounting::where('type', 'Expense')
+            ->where('Currency_id', 2)
+            ->sum('price');
+        $totalIncome = Accounting::where('type', 'Income')
+            ->where('Currency_id', 1)
+            ->sum('price');
+        $totalIncomeReal = Accounting::where('type', 'Income')
+            ->where('Currency_id', 2)
+            ->sum('price');
+        $countTotalSale = Sales::count();
+        $countTotalOrder = Orders::count();
+        return view('accounting', compact('totalExpense','totalExpenseReal','totalIncome','totalIncomeReal','countTotalSale','countTotalOrder')); 
     }
 
     /**

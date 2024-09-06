@@ -25,7 +25,7 @@
                     <div class="relative group">
                         <!-- Add data attributes here -->
                         <button class="edit-ingredient-btn bg-blue-500 text-white px-3 py-1 rounded cursor-pointer transition duration-300 hover:bg-blue-600"
-                        data-pro-id="{{ $data->Pro_id }}"
+                        data-pro-id="{{ $data->IPI_id }}"
                         data-IIQ_name="{{$data->IIQ_name}}"
                         data-product-name="{{$data->Product_Name}}"
                         data-item-name="{{$data->Item_Name}}"
