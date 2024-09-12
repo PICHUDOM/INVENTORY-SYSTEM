@@ -1,1 +1,0 @@
-<div>Location Content</div>
